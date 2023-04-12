@@ -1,14 +1,16 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class Exercise {
+class Exercise extends Equatable {
   final String? title;
   final int? prelude;
   final int? duration;
   final int? index;
   final int? startTime;
 
-  Exercise({
+  const Exercise({
     required this.prelude,
     required this.title,
     required this.duration,
@@ -42,4 +44,10 @@ class Exercise {
   String toString() {
     return 'Exercise(title: $title, prelude: $prelude, duration: $duration, index: $index, startTime: $startTime)';
   }
+
+  @override
+  List<Object?> get props => [title, prelude, duration, index, startTime];
+
+  @override
+  bool get stringify => true;
 }
